@@ -25,3 +25,9 @@ CREATE TABLE noticias(
     imagem VARCHAR(45) NOT NULL,
     usuario_id INT NOT NULL,
 );
+
+## Criar o relacionamento entre tabelas e a chave estrangeira
+
+ALTER TABLE noticias
+    ADD CONSTRAINT fk_noticias_usuarios
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id);
