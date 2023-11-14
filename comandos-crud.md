@@ -2,7 +2,7 @@
 
 ## Resumo
 
-=C: CREATE (INSERT) -> usado para inserir dados,
+= C: CREATE (INSERT) -> usado para inserir dados,
 = R: READ (SELECT) -> usado para ler/consultar dados,
 = U: UPDATE (UPDATE) -> usado para atualizar dados,
 = D: DELETE (DELETE) -> usado para excluir dados,
@@ -20,7 +20,7 @@ VALUES(
     'admin'
 );
 ```
-
+```sql
 INSERT INTO usuarios (nome, email, senha, tipo) 
 VALUES(
     'Fulano da Silva',
@@ -38,7 +38,7 @@ VALUES(
     'marreta',
     'editor'
 );
-
+```
 
 ### SELECT na tabela de usuários
 
