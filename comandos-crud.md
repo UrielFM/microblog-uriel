@@ -63,11 +63,12 @@ WHERE id = 4;
 
 -- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
 ```
-```sql
+
 ### DELETE dados da tabela de usuários
--- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
-```
 ```sql
+-- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+
+
 DELETE FROM usuarios WHERE id =2;
 
 -- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
