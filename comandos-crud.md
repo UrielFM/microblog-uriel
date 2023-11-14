@@ -42,11 +42,15 @@ VALUES(
 
 ### SELECT na tabela de usuários
 
+```sql
 SELECT * FROM usuarios;
-
+```
+```sql
 SELECT nome, email FROM usuarios;
-
+```
+```sql
 SELECT nome, email FROM usuarios WHERE tipo = 'admin';
+```
 
 
 ### UPADATE em dados da tabela de usuários
