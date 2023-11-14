@@ -50,8 +50,49 @@ SELECT nome, email FROM usuarios WHERE tipo = 'admin';
 
 
 ### UPADATE em dados da tabela de usuários
+-- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
 
 UPDATE usuarios SET tipo = 'admin' 
 WHERE id = 4;
 
 -- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+
+### DELETE dados da tabela de usuários
+-- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+
+DELETE FROM usuarios WHERE id =2;
+
+-- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+
+
+
+
+### INSERT na tabela de noticias
+
+INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
+values(
+    'Descoberto oxigênio em Vênus',
+    'Recentemente telescópio terrestre no Havaí encontrou traços de oxigenio no planeta.',
+    'Os pesquisadores detectaram diretamente o oxigênio pela primeira vez no lado de Vênus voltado para o Sol —onde ele é realmente produzido na atmosfera— e também o detectaram no lado voltado para longe do Sol, onde ele já havia sido avistado por um telescópio terrestre no Havaí.',
+    'venus.jpg',
+    1
+);
+
+
+INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
+values(
+    'Nova versão do VSCode',
+    'Recentemente o VSCode foi atualizado...',
+    'A Microsoft trouxe recursos de IA...',
+    'vscode.png',
+    4
+);
+
+INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
+values(
+    'Onda de calor no Brasil',
+    'Temperaturas muito acima da média',
+    'Efeitos do aquecimento global estão prejudicando a vida...',
+    'sol.svg',
+    1
+);
