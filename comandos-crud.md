@@ -52,27 +52,30 @@ SELECT nome, email FROM usuarios;
 SELECT nome, email FROM usuarios WHERE tipo = 'admin';
 ```
 
-
+```sql
 ### UPADATE em dados da tabela de usuários
--- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
 
+-- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+```
+```sql
 UPDATE usuarios SET tipo = 'admin' 
 WHERE id = 4;
 
 -- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
-
+```
+```sql
 ### DELETE dados da tabela de usuários
 -- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
-
+```
+```sql
 DELETE FROM usuarios WHERE id =2;
 
 -- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
-
-
-
+```
 
 ### INSERT na tabela de noticias
 
+```sql
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 values(
     'Descoberto oxigênio em Vênus',
@@ -82,7 +85,8 @@ values(
     1
 );
 
-
+```
+```sql
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 values(
     'Nova versão do VSCode',
@@ -91,7 +95,8 @@ values(
     'vscode.png',
     4
 );
-
+```
+```sql
 INSERT INTO noticias (titulo, resumo, texto, imagem, usuario_id)
 values(
     'Onda de calor no Brasil',
@@ -100,11 +105,13 @@ values(
     'sol.svg',
     1
 );
+```
 
-### Objetivo: consultar que mostre a data e o titulo da npticia e o nome do autor desta noticia.
+### Objetivo: consultar que mostre a data e o titulo da noticia e o nome do autor desta noticia.
 
 #### SELECT COM JOIN (CONSULTA COM JUNÇÃO DE TABELAS)
 
+```sql
 -- Especificamos o nome da coluna junto com o nome da tabela:
 
 SELECT 
@@ -122,3 +129,4 @@ ON noticias.usuario_id = usuarios.id
 -- OPCIONAL (ordenação/classificação pela data)
 -- DESC indica ordem descrescente (mais recente vem primerio)
 ORDER BY data DESC; 
+```
