@@ -52,12 +52,11 @@ SELECT nome, email FROM usuarios;
 SELECT nome, email FROM usuarios WHERE tipo = 'admin';
 ```
 
-```sql
-### UPADATE em dados da tabela de usuários
 
--- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
-```
+### UPADATE em dados da tabela de usuários
 ```sql
+-- Obs.: NUNCA ESQUEÇA DE PASSAR UMA CONDIÇÃO PARA O UPDATE!
+
 UPDATE usuarios SET tipo = 'admin' 
 WHERE id = 4;
 
