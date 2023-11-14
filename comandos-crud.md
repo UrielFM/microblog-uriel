@@ -96,3 +96,25 @@ values(
     'sol.svg',
     1
 );
+
+### Objetivo: consultar que mostre a data e o titulo da npticia e o nome do autor desta noticia.
+
+#### SELECT COM JOIN (CONSULTA COM JUNÇÃO DE TABELAS)
+
+-- Especificamos o nome da coluna junto com o nome da tabela:
+
+SELECT 
+    noticias.data,
+    noticias.titulo,
+    usuarios.nome 
+    
+-- Especificamos quais tabelas serão "juntadas/combinadas":
+FROM noticias JOIN usuarios
+
+-- Criterio para o JOIN funcionar:
+-- Fazemos uma comparação entre a chave estrangeira(Fk) com a chave primaria (PK).
+ON noticias.usuario_id = usuarios.id
+
+-- OPCIONAL (ordenação/classificação pela data)
+-- DESC indica ordem descrescente (mais recente vem primerio)
+ORDER BY data DESC; 
