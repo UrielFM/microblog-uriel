@@ -17,7 +17,7 @@ if (!$conexao) {
     die("Deu ruim: ".mysqli_connect_errno());
 }else {
 // Senão, a conexão foi feita com sucesso!
-    echo "Beleza, conectador!";
+    echo "Cadastrado com Sucesso!";
 }
 
 
