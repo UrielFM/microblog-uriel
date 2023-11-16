@@ -19,7 +19,7 @@ CREATE TABLE usuarios(
 CREATE TABLE noticias(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     data DATETIME NOT NULL Default CURRENT_TIMESTAMP,
-    titulo  TEXT NOT NULL,
+    titulo  VARCHAR(150) NOT NULL,
     texto TEXT NOT NULL,
     resumo TEXT NOT NULL,
     imagem VARCHAR(45) NOT NULL,
