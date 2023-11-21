@@ -26,6 +26,12 @@ if (isset($_POST['atualizar'])) {
 		/* Caso contrário, pegaremos a senha nova digitada e a CODIFICAMOS antes de mandar para o banco.*/
 		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 	}
+
+	// Chamamos a função e passamos os dados
+	atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
+
+	// Redirecionamos para a página de usuários
+	header("location:usuarios.php");
 }
 ?>
 
