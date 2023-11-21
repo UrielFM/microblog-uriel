@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Nov-2023 às 21:26
+-- Tempo de geração: 21-Nov-2023 às 21:04
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.1.12
 
@@ -32,21 +32,12 @@ USE `microblog_uriel`;
 CREATE TABLE `noticias` (
   `id` int(11) NOT NULL,
   `data` datetime NOT NULL DEFAULT current_timestamp(),
-  `titulo` text NOT NULL,
+  `titulo` varchar(150) NOT NULL,
   `texto` text NOT NULL,
   `resumo` text NOT NULL,
   `imagem` varchar(45) NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `noticias`
---
-
-INSERT INTO `noticias` (`id`, `data`, `titulo`, `texto`, `resumo`, `imagem`, `usuario_id`) VALUES
-(1, '2023-11-14 16:22:56', 'Descoberto oxigênio em Vênus', 'Os pesquisadores detectaram diretamente o oxigênio pela primeira vez no lado de Vênus voltado para o Sol —onde ele é realmente produzido na atmosfera— e também o detectaram no lado voltado para longe do Sol, onde ele já havia sido avistado por um telescópio terrestre no Havaí.', 'Recentemente telescópio terrestre no Havaí encontrou traços de oxigenio no planeta.', 'venus.jpg', 1),
-(2, '2023-11-14 16:27:56', 'Nova versão do VSCode', 'A Microsoft trouxe recursos de IA...', 'Recentemente o VSCode foi atualizado...', 'vscode.png', 4),
-(3, '2023-11-14 16:30:09', 'Onda de calor no Brasil', 'Efeitos do aquecimento global estão prejudicando a vida...', 'Temperaturas muito acima da média', 'sol.svg', 1);
 
 -- --------------------------------------------------------
 
@@ -67,10 +58,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `tipo`) VALUES
-(1, 'Uriel Farias Mishima', 'uriel.mishima@bol.com.br', '123456', 'admin'),
-(3, 'Beltrano Soares', 'beltrano@msn.com', '000penha', 'admin'),
-(4, 'Chapolin Colorado', 'chapolin@vingadores.com.br', 'marreta', 'admin'),
-(5, 'Fulano da Silva', 'fulano@gmail.com', '456', 'editor');
+(3, 'Daniel ', 'daniel@simplicity.com', '$2y$10$9IOWto7JwY6VW/nPh8suMOVibbAXLCG7I5uO9KPMDk3TsZuBp0uUO', 'admin'),
+(4, 'Uriel', 'uriel@eu.com.br', '$2y$10$70O6pkX8FFd0JHEoR69g4uDthJuDdN3/yOOwI45vA.sU.uSaJw.12', 'admin'),
+(5, 'Uriel Mishima', 'SEILA@NAOSEI.COM', '$2y$10$tJjOpGtJEYimwrhVxknLieVw1eeC4qYvAOxujkIZT4FLmjvqvzas2', 'editor'),
+(6, 'Daniel ', 'Uriel@sera.com', '$2y$10$6.dP8Vh480LcSVeZ16aeYurvHL1I9D6TzzIEn0b7K2qam/wgvLtSm', 'editor');
 
 --
 -- Índices para tabelas despejadas
@@ -98,13 +89,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para despejos de tabelas
