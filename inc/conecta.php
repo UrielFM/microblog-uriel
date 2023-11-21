@@ -16,8 +16,8 @@ if (!$conexao) {
 // PARE a aplicação e mostre uma mensagem de erro
     die("Deu ruim: ".mysqli_connect_errno());
 }else {
-// Senão, a conexão foi feita com sucesso!
-    echo "Cadastrado com Sucesso!";
+/*  //Senão, a conexão foi feita com sucesso!
+     echo "Cadastrado com Sucesso!";*/ 
 }
 
 
