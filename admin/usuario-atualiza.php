@@ -19,7 +19,7 @@ if (isset($_POST['atualizar'])) {
 
 	/* Se o campo senha estiver vazio OU se a senha digitada for igual à senha que já existe no banco de dados, então significa que  usuário NÃO ALTEROU A SENHA. POrtanto, devemos MANTER a senha existente.*/
 	if (empty($_POST['senha']) || password_verify($_POST['senha'], $usuario['senha'])) {
-		
+
 		$senha = $usuario['senha']; //matemos a mesma
 
 	} else {
@@ -79,6 +79,7 @@ if (isset($_POST['atualizar'])) {
 
 			<button class="btn btn-primary" name="atualizar"><i class="bi bi-arrow-clockwise"></i> Atualizar</button>
 		</form>
+
 
 	</article>
 </div>
