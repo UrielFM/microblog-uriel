@@ -3,6 +3,17 @@ require "inc/funcoes-usuarios.php";
 require "inc/funcoes-sessao.php";
 require "inc/cabecalho.php";
 
+/* Mensagens de feedback de acordo com os parâmetros de URL */
+if (isset($_GET['acesso_negado'])) {
+	$mensagem = "Você deve logar primeiro!";
+}elseif (isset($_GET['dados_incorretos'])){
+	$mensagem = "Dados incorretos, verifique!";
+}elseif (isset($_GET['saiu'])){
+	$mensagem = "Você saiu do sistema!";
+}elseif (isset($_GET['campos_obrigatorios'])){
+	$mensagem = "Preencher e-mail e senha!!";
+}
+
 if (isset($_POST['entrar'])) {
 	// Verificar se os campos estão vazios
 	if (empty($_POST['email']) || empty($_POST['senha'])) {
@@ -42,9 +53,11 @@ Se usuario existe (diferente de null) E a verificação da senha der certo (pass
 
 		<form action="" method="post" id="form-login" name="form-login" class="mx-auto w-50" autocomplete="off">
 
+<?php if(isset($mensagem)) { ?>
 			<p class="my-2 alert alert-warning text-center">
-				Mensagens de feedback...
+				<?=$mensagem?>
 			</p>
+<?php } ?>
 
 			<div class="mb-3">
 				<label for="email" class="form-label">E-mail:</label>
