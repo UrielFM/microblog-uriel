@@ -1,5 +1,15 @@
 <?php
-require "inc/cabecalho.php"; 
+require "inc/funcoes-usuarios.php";
+require "inc/funcoes-sessao.php";
+require "inc/cabecalho.php";
+
+if (isset($_POST['entrar'])) {
+	// Verificar se os campos estão vazios
+	if (empty($_POST['email']) || empty($_POST['senha'])) {
+		header("location:login.php?campos_obrigatorios");
+		exit; //ou die
+	}
+}
 ?>
 
 <div class="row">
