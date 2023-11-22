@@ -27,19 +27,21 @@ function lerUsuarios($conexao)
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 }
 
-function lerUmUsuario($conexao, $id){
+function lerUmUsuario($conexao, $id)
+{
     /* Montando o  SQL contendo o id do usuário que queremos carregar */
     $sql = "SELECT * FROM usuarios WHERE id = $id";
 
     // Executamos e guardamos o resultado da consulta
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-    
-    // Retornando p resultado transformando em Um array com os dados
+
+    // Retornando p resultado transformando em UM array com os dados
     return mysqli_fetch_assoc($resultado);
 }
 
-function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo){
- 
+function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo)
+{
+
     $sql = "UPDATE usuarios SET 
         nome = '$nome', 
         email = '$email', 
@@ -51,8 +53,15 @@ function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo){
 }
 
 
-function excluirUsuario ( $conexao, $id) { 
+function excluirUsuario($conexao, $id)
+{
     $sql = "DELETE FROM usuarios WHERE id = $id";
-
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+}
+
+function buscaUsuario($conexao, $email)
+{
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    return mysqli_fetch_assoc($resultado);
 }

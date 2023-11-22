@@ -36,7 +36,8 @@ function login($id, $nome, $tipo)
     $_SESSION["tipo"] = $tipo;
 }
 
-function logout(){
+function logout()
+{
     session_destroy();
     header("location:../login.php?saiu");
     exit; //ou die
