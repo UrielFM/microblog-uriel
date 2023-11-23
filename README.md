@@ -18,3 +18,19 @@ São as páginas contidas na pasta **admin** do projeto: index, meu-perfil, usua
 Usuários do tipo **admin**, podem acessar/modificar **TUDO**.
 
 Usuários do tipo **editor**, podem acessar/modificar **somente** seus próprios dados e suas próprias notícias. Ou seja, **não podem** por exemplo, administrar outros usuários.
+
+
+array(6) {
+  ["name"]=>
+  string(7) "dog.jpg"
+  ["full_path"]=>
+  string(7) "dog.jpg"
+  ["type"]=>
+  string(10) "image/jpeg"
+  ["tmp_name"]=>
+  string(24) "C:\xampp\tmp\php6CE0.tmp"
+  ["error"]=>
+  int(0)
+  ["size"]=>
+  int(19885)
+}
