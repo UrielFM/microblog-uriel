@@ -2,6 +2,10 @@
 require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
 
+
+// Verificando se o usuário pode entrar nesta página
+verificaNivelTipo();
+
 /* Chamamos a função lerUsuarios que ao terminar de fazer os processos, ela retorna os dados dos usuários. */
 $listaDeUsuarios = lerUsuarios($conexao);
 ?>
