@@ -49,10 +49,14 @@ $pagina = basename($_SERVER['PHP_SELF']);
                             <a class="nav-link" href="meu-perfil.php">Meu perfil</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="usuarios.php">Usuários</a>
-                        </li>
-
+                        <!-- Se o usuario logado for do tipo admin -->
+                        <?php if ($_SESSION['tipo'] === 'admin') { ?>
+                            <!-- Então vera o item abaixo no meu -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="usuarios.php">Usuários</a>
+                            </li>
+                        <?php } ?>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="noticias.php">Notícias</a>
                         </li>
