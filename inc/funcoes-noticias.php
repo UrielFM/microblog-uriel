@@ -2,14 +2,18 @@
 require "conecta.php";
 
 /* Usada em noticia-insere.php */
-function inserirNoticia($conexao, $titulo, $texto, $resumo, $nomeImagem, $usuarioId) {
+function inserirNoticia($conexao, $titulo, $texto, $resumo, $nomeImagem, $usuarioId)
+{
     $sql = "INSERT INTO noticias (
         titulo, texto, resumo, imagem, usuario_id) 
     VALUES (
-        '$titulo', '$texto', '$resumo', '$nomeImagem', $usuarioId)";
+        '$titulo', 
+        '$texto', 
+        '$resumo', 
+        '$nomeImagem', 
+        $usuarioId)";
 
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
 } // fim inserirNoticia
 
 
@@ -37,7 +41,7 @@ function upload($arquivo)
     $temporario = $arquivo['tmp_name'];
 
     // Definindo para onde a imagem vai e com qual nome
-    $destino = "../imagens/".$nome;
+    $destino = "../imagens/" . $nome;
 
     //Movendo o arquivo da área temporário para a pasta final
     move_uploaded_file($temporario, $destino);
@@ -68,30 +72,46 @@ function lerNoticias($conexao, $idUsuario, $tipoUsuario)
         $sql = "SELECT id, titulo, data FROM noticias
         WHERE usuario_id = $idUsuario ORDER BY data DESC";
     }
-    
+
     // Executando a consulta e guardando o resultado dela
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     // Retoenando o resultado convertido em uma matriz/array
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
 } // fim lerNoticias
 
 
 /* Usada em noticias.php e páginas da área pública */
 function formataData()
 {
-//    $sql = "SELECT FORMAT(data, 'dd-mm-yyyy hh:mm:ss')";
+    //$sql = "SELECT FORMAT(data, 'dd-mm-yyyy hh:mm:ss')";
 } // fim formataData
 
 
 /* Usada em noticia-atualiza.php */
-function lerUmaNoticia($conexao)
-{
+function lerUmaNoticia(
+    $conexao,
+    $idNoticia,
+    $idUsuario,
+    $tipoUsuario
+) {
+    if ($tipoUsuario == "admin") {
+        // Admin = Pode carregar dados de qualquer noticia de qualquer pessoa
+        $sql = "SELECT * FROM noticias 
+        WHERE id = $idNoticia";
+    } else {
+        // Editor = Pode carregar dados de qualquer noticia DELE APENAS
+        $sql = "SELECT * FROM noticias 
+        WHERE id = $idNoticia 
+        AND usuario_id = $idUsuario";
+    }
 
+    // Executando o comando SQL e guardando o resultado
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
+    // Retornando UM ÚNICO attay com os dados da notícia
+    return mysqli_fetch_assoc($resultado);
+    
 } // fim lerUmaNoticia
 
 
