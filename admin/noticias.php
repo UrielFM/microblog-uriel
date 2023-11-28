@@ -8,8 +8,11 @@ $idUsuario = $_SESSION["id"];
 //  tipo do usuario logado
 $tipoUsuario= $_SESSION['tipo'];
 
-echo $idUsuario, $tipoUsuario;
+$listaDeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 
+echo "<pre>";
+var_dump($listaDeNoticias);
+echo "</pre>"
 ?>
 
 
