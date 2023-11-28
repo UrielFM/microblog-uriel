@@ -1,5 +1,15 @@
 <?php 
 require_once "../inc/cabecalho-admin.php";
+require_once "../inc/funcoes-noticias.php";
+
+// id do usuário logado
+$idUsuario = $_SESSION["id"];
+
+//  tipo do usuario logado
+$tipoUsuario= $_SESSION['tipo'];
+
+echo $idUsuario, $tipoUsuario;
+
 ?>
 
 
