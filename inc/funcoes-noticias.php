@@ -81,6 +81,7 @@ function lerNoticias($conexao, $idUsuario, $tipoUsuario)
 /* Usada em noticias.php e páginas da área pública */
 function formataData()
 {
+//    $sql = "SELECT FORMAT(data, 'dd-mm-yyyy hh:mm:ss')";
 } // fim formataData
 
 
