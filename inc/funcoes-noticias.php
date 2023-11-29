@@ -111,17 +111,41 @@ function lerUmaNoticia(
 
     // Retornando UM ÚNICO attay com os dados da notícia
     return mysqli_fetch_assoc($resultado);
-    
 } // fim lerUmaNoticia
 
 
 /* Usada em noticia-atualiza.php */
-function atualizarNoticia($conexao)
-{
+function atualizarNoticia(
+    $conexao,
+    $titulo,
+    $texto,
+    $resumo,
+    $imagem,
+    $idNoticia,
+    $idUsuario,
+    $tipoUsuario
+) {
+    if ($tipoUsuario == 'admin') {
 
+        // SQL do admin, pode atualizae QUALQUER notícia
+        $sql = "UPDATE noticias SET
+        titulo = '$titulo',
+        texto = '$texto',
+        resumo = '$resumo',
+        imagem = '$imagem'
+    WHERE id = $idNoticia";
+    } else {
+        // SQL DO EDITOR, pode atualizar SOMENTE as dele
+        $sql = "UPDATE noticias SET
+        titulo = '$titulo',
+        texto = '$texto',
+        resumo = '$resumo',
+        imagem = '$imagem'
+    WHERE id = $idNoticia AND 
+        usuario_id = $idUsuario";
+    }
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 } // fim atualizarNoticia
 
 
