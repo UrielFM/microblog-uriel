@@ -1,5 +1,14 @@
 <?php 
 require "inc/cabecalho.php"; 
+require "inc/funcoes-noticias.php"; 
+
+
+// Chamando a função para carregar os dados  de todas notícias
+$listaDeNoticias = lerTodasAsNoticias($conexao);
+
+echo "<PRE>";
+var_dump($listaDeNoticias);
+echo "</pre>";
 ?>  
 
 
