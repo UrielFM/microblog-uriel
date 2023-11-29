@@ -1,6 +1,6 @@
 <?php
 require "../inc/funcoes-usuarios.php";
-require "funcoes-sessao.php";
+require "../inc/funcoes-sessao.php";
 
 // Verifica de a pessoa está logado
 verificaAcesso();
