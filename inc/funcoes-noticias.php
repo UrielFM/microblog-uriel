@@ -181,16 +181,24 @@ function lerTodasAsNoticias($conexao)
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
 } // fim lerTodasAsNoticias
 
 
 /* Usada em noticia.php */
-function lerDetalhes($conexao)
+function lerDetalhes($conexao, $id)
 {
+    $sql = "SELECT noticias.*, 
+    usuarios.nome AS autor_nome 
+    FROM noticias 
+    JOIN usuarios 
+    ON noticias.usuario_id = usuarios.id
+    WHERE noticias.id = $id";
 
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    return mysqli_fetch_assoc($resultado);
 
 } // fim lerDetalhes
 
