@@ -188,13 +188,11 @@ function lerTodasAsNoticias($conexao)
 function lerDetalhes($conexao, $id)
 {
     $sql = "SELECT noticias.*, 
-    usuarios.nome AS autor_nome 
+    usuarios.nome AS autor
     FROM noticias 
     JOIN usuarios 
     ON noticias.usuario_id = usuarios.id
     WHERE noticias.id = $id";
-
-
 
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
