@@ -1,5 +1,41 @@
-<?php 
+<?php
+require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
+
+// Verificando se o usuário pode entrar nesta página
+verificaNivelTipo();
+
+// Pegandoo valor do parâmetro id vindo da URL
+$id = $_GET['id'];
+
+// Chamando a função e guardando o retorno dela
+$usuario = lerUmUsuario($conexao, $id);
+
+// Verificando se o formulario foi acionado
+if (isset($_POST['atualizar'])) {
+	// Capturar os dados
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$tipo = $_POST['tipo'];
+
+	// Logica para a senha
+
+	/* Se o campo senha estiver vazio OU se a senha digitada for igual à senha que já existe no banco de dados, então significa que  usuário NÃO ALTEROU A SENHA. POrtanto, devemos MANTER a senha existente.*/
+	if (empty($_POST['senha']) || password_verify($_POST['senha'], $usuario['senha'])) {
+
+		$senha = $usuario['senha']; //matemos a mesma
+
+	} else {
+		/* Caso contrário, pegaremos a senha nova digitada e a CODIFICAMOS antes de mandar para o banco.*/
+		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+	}
+
+	// Chamamos a função e passamos os dados
+	atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
+
+	// Redirecionamos para a página de usuários
+	header("location:usuarios.php");
+}
 ?>
 
 
