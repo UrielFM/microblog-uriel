@@ -83,9 +83,9 @@ function lerNoticias($conexao, $idUsuario, $tipoUsuario)
 
 /* Usada em noticias.php e páginas da área pública */
 function formataData($data)
-{ $dataFormatada = date("d/m/Y H:i:s", strtotime($data));
+{
+    $dataFormatada = date("d/m/Y H:i:s", strtotime($data));
     return $dataFormatada;
-    
 } // fim formataData
 
 
@@ -198,14 +198,21 @@ function lerDetalhes($conexao, $id)
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     return mysqli_fetch_assoc($resultado);
-
 } // fim lerDetalhes
 
 
 /* Usada em resultados.php */
-function busca($conexao)
+function busca($conexao, $termoDigitado)
 {
+    $sql = "SELECT * FROM noticias
+    WHERE 
+    titulo LIKE '%$termoDigitado%' OR
+    resumo LIKE '%$termoDigitado%' OR
+    texto LIKE '%$termoDigitado%' 
+    ORDER BY data DESC";
 
-    // mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
 } // fim busca
