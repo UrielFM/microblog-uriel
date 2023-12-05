@@ -3,7 +3,7 @@ require_once "../inc/cabecalho-admin.php";
 require_once "../inc/funcoes-noticias.php";
 
 // Capturar o id da notícia que foi transmitid via URL
-$idNoticia = $_GET['id'];
+$idNoticia = mysqli_real_escape_string($conexao, $_GET['id']);
 
 // Capturando o usuário logado (id) e o tipo dele (tipo)
 $idUsuario = $_SESSION['id'];
@@ -17,9 +17,9 @@ $noticia = lerUmaNoticia(
     $tipoUsuario
 );
 if (isset($_POST['atualizar'])) {
-    $titulo = $_POST['titulo'];
-    $texto = $_POST['texto'];
-    $resumo = $_POST['resumo'];
+    $titulo = htmlspecialchars($_POST['titulo']);
+    $texto = htmlspecialchars($_POST['texto']);
+    $resumo = htmlspecialchars($_POST['resumo']);
 
     // Lógica/Algoritmo para imagem
 
