@@ -2,11 +2,8 @@
 require_once "../inc/funcoes-usuarios.php";
 require_once "../inc/cabecalho-admin.php";
 
-// Verificando se o usuário pode entrar nesta página
-verificaNivelTipo();
-
-// Pegandoo valor do parâmetro id vindo da URL
-$id = $_GET['id'];
+// Pegandoo valor do parâmetro id vindo da SESSAO
+$id = $_SESSION['id'];
 
 // Chamando a função e guardando o retorno dela
 $usuario = lerUmUsuario($conexao, $id);
@@ -16,7 +13,7 @@ if (isset($_POST['atualizar'])) {
 	// Capturar os dados
 	$nome = $_POST['nome'];
 	$email = $_POST['email'];
-	$tipo = $_POST['tipo'];
+	$tipo = $_SESSION['tipo']; // MANTENDO O TIPO
 
 	// Logica para a senha
 
@@ -33,29 +30,34 @@ if (isset($_POST['atualizar'])) {
 	// Chamamos a função e passamos os dados
 	atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
 
-	// Redirecionamos para a página de usuários
-	header("location:usuarios.php");
+	// Atualize na sessão atual o nome da pessoa (caso mude)
+	$_SESSION["nome"] = $nome;
+
+	// Redirecionamos para a página de index
+	header("location:index.php");
 }
 ?>
 
 
 <div class="row">
 	<article class="col-12 bg-white rounded shadow my-1 py-4">
-		
+
 		<h2 class="text-center">
-		Atualizar meus dados
+			Atualizar meus dados
 		</h2>
-				
+
 		<form class="mx-auto w-75" action="" method="post" id="form-atualizar" name="form-atualizar">
 
 			<div class="mb-3">
 				<label class="form-label" for="nome">Nome:</label>
-				<input class="form-control" type="text" id="nome" name="nome" required>
+				<input value="<?=$usuario['nome']?>"
+				class="form-control" type="text" id="nome" name="nome" required>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label" for="email">E-mail:</label>
-				<input class="form-control" type="email" id="email" name="email" required>
+				<input value="<?=$usuario['email']?>" 
+				class="form-control" type="email" id="email" name="email" required>
 			</div>
 
 			<div class="mb-3">
@@ -65,12 +67,11 @@ if (isset($_POST['atualizar'])) {
 
 			<button class="btn btn-primary" name="atualizar"><i class="bi bi-arrow-clockwise"></i> Atualizar</button>
 		</form>
-		
+
 	</article>
 </div>
 
 
-<?php 
+<?php
 require_once "../inc/rodape-admin.php";
 ?>
-
